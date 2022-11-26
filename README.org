@@ -1,0 +1,14 @@
+#+TITLE:	Date Dimension
+#+SUBTITLE:	README
+#+OPTIONS:	toc:nil num:nil
+#+STARTUP:	indent showeverything
+#+CATEGORY:	Projects
+#+TAGS:		readme python data-warehouse date-dimension
+
+* Description
+*UPDATE 2:* It looks like the SQL script works, so there is nothing to do here
+
+*UPDATE:* I may just update the week-related columns with Python and leave the SQL logic intact.
+
+After mucking about with a PostgreSQL script for generating a date dimension, I wasn't happy with how week numbers were handled, and Python seems to do it better.
+

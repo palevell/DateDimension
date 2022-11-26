@@ -1,0 +1,18 @@
+#+TITLE:	Date Dimension
+#+SUBTITLE:	Log
+#+OPTIONS:	toc:nil num:nil
+#+STARTUP:	indent showeverything
+#+CATEGORY:	Projects
+#+TAGS:		log python data-warehouse date-dimension
+
+* Saturday, November 26, 2022
+:LOGBOOK:
+CLOCK: [2022-11-26 Sat 16:15]--[2022-11-26 Sat 17:15] =>  1:00
+CLOCK: [2022-11-26 Sat 10:15]--[2022-11-26 Sat 12:45] =>  2:30
+:END:
+- I was ready to re-do the entire date dimension logic in Python, but I may just update the week-related columns with Python
+- After tweaking the ~dim_date.sql~ script, it appears that I did get the week stuff correct--it appears that there is nothing that needs to be done, here
+
+
+
+
