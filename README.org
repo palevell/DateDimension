@@ -6,6 +6,8 @@
 #+TAGS:		readme python data-warehouse date-dimension
 
 * Description
+*UPDATE 3*: I am trying to generate a SQLAlchemy mode for the ~dim_date~ table, using SQLAcodegen
+
 *UPDATE 2:* It looks like the SQL script works, so there is nothing to do here
 
 *UPDATE:* I may just update the week-related columns with Python and leave the SQL logic intact.

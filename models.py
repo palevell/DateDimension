@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 # models.py - Saturday, November 26, 2022
 """ Creating a date dimension """
-__version__ = "0.1.0-dev0"
+__version__ = "0.2.3-dev0"
 
 import os, sys
 from dataclasses import dataclass
@@ -21,12 +21,59 @@ from sqlalchemy.orm.collections import attribute_mapped_collection
 from config import Config
 
 schema = Config.DB_SCHEMA
-Base = declarative_base(metadata=sa.MetaData(schema=schema))
+engine = sa.create_engine(Config.SQLALCHEMY_DATABASE_URI)
+metadata = sa.MetaData(bind=engine, schema=schema)
+Base = declarative_base(metadata=metadata)
 
 __MODULE__ = os.path.splitext(os.path.basename(__file__))[0]
 
 
-class DateDim(Base):
+class DimDate(Base):
+    __tablename__ = 'dim_date'
+
+    id = sa.Column(sa.Integer, primary_key=True)
+    date_id = sa.Column(sa.Date, nullable=False, unique=True)
+    epoch = sa.Column(sa.BigInteger, nullable=False)
+    day_suffix = sa.Column(sa.String(4), nullable=False)
+    day_name = sa.Column(sa.String(9), nullable=False)
+    day_of_week = sa.Column(sa.Integer, nullable=False)
+    day_of_week_iso = sa.Column(sa.Integer, nullable=False)
+    day_of_month = sa.Column(sa.Integer, nullable=False)
+    day_of_quarter = sa.Column(sa.Integer, nullable=False)
+    day_of_year = sa.Column(sa.Integer, nullable=False)
+    week_id = sa.Column(sa.String(7), nullable=False)
+    week_id_iso = sa.Column(sa.String(7), nullable=False)
+    week_name = sa.Column(sa.String(3), nullable=False)
+    week_name_iso = sa.Column(sa.String(3), nullable=False)
+    week_of_month = sa.Column(sa.Integer, nullable=False)
+    week_of_year = sa.Column(sa.Integer, nullable=False)
+    week_of_year_id = sa.Column(sa.CHAR(10), nullable=False)
+    week_of_year_iso = sa.Column(sa.Integer, nullable=False)
+    week_of_year_iso_id = sa.Column(sa.CHAR(10), nullable=False)
+    month_of_year = sa.Column(sa.Integer, nullable=False)
+    month_name = sa.Column(sa.String(9), nullable=False)
+    month_abbr = sa.Column(sa.CHAR(3), nullable=False)
+    quarter_of_year = sa.Column(sa.Integer, nullable=False)
+    quarter_name = sa.Column(sa.String(9), nullable=False)
+    quarter_id = sa.Column(sa.CHAR(6), nullable=False)
+    yyyy = sa.Column(sa.Integer, nullable=False, index=True)
+    week_from = sa.Column(sa.Date, nullable=False)
+    week_thru = sa.Column(sa.Date, nullable=False, index=True)
+    week_from_iso = sa.Column(sa.Date, nullable=False)
+    week_thru_iso = sa.Column(sa.Date, nullable=False)
+    month_from = sa.Column(sa.Date, nullable=False)
+    month_thru = sa.Column(sa.Date, nullable=False, index=True)
+    quarter_from = sa.Column(sa.Date, nullable=False)
+    quarter_thru = sa.Column(sa.Date, nullable=False)
+    year_from = sa.Column(sa.Date, nullable=False)
+    year_thru = sa.Column(sa.Date, nullable=False)
+    mmyyyy = sa.Column(sa.CHAR(6), nullable=False)
+    mmddyyyy = sa.Column(sa.CHAR(10), nullable=False)
+    is_weekend = sa.Column(sa.Boolean, nullable=False)
+    # schema="public"
+
+
+class DateDim2(Base):
     __tablename__ = "dim_date_dev"
     id = sa.Column(sa.Integer, nullable=False, primary_key=True)
     date_id = sa.Column(sa.Date, nullable=False, unique=True)

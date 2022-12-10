@@ -8,6 +8,7 @@ alembic = "*"
 environs = "*"
 sqlalchemy = "*"
 psycopg2 = "*"
+sqlacodegen = "*"
 
 [dev-packages]
 

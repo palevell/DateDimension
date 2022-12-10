@@ -4,8 +4,8 @@
  */
 
 
-DROP TABLE IF EXISTS dim_date;
-DROP TABLE IF EXISTS dim_date2;
+-- DROP TABLE IF EXISTS dim_date;
+-- DROP TABLE IF EXISTS dim_date2;
 
 CREATE TABLE IF NOT EXISTS dim_date (
 	id			INT NOT NULL PRIMARY KEY,
