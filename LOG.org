@@ -1,9 +1,14 @@
 #+TITLE:	Date Dimension
 #+SUBTITLE:	Log
 #+OPTIONS:	toc:nil num:nil
-#+STARTUP:	indent showeverything
+#+STARTUP:	indent show3levels
 #+CATEGORY:	Projects
-#+TAGS:		log python data-warehouse date-dimension
+#+TAGS:		log python datawarehouse datedimension
+
+* Sunday, November 17, 2024
+** Switched Virtual Environment Manager From PipEnv to PDM
+** Comparing Week Numbers in PSQL, Python, and BASH
+- Week numbers appear to be correct, but Week IDs are still incorrect (on Sundays and Mondays)
 
 * Saturday, December 10, 2022
 :LOGBOOK:
@@ -15,7 +20,7 @@ CLOCK: [2022-12-10 Sat 11:15]--[2022-12-10 Sat 12:30] =>  1:15
 ** Used Alembic to Generate the ~dim_date~ table in ~demodb~
 - This was a test, since ~dim_date~ already exists in ~developmentdb~
 - Ran ~dim_date.sql~ to populate the table
-  
+
 * Saturday, November 26, 2022
 :LOGBOOK:
 CLOCK: [2022-11-26 Sat 16:15]--[2022-11-26 Sat 17:15] =>  1:00
