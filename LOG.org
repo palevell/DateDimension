@@ -6,9 +6,25 @@
 #+TAGS:		log python datawarehouse datedimension
 
 * Sunday, November 17, 2024
-** Switched Virtual Environment Manager From PipEnv to PDM
-** Comparing Week Numbers in PSQL, Python, and BASH
+- Switched Virtual Environment Manager From PipEnv to PDM
+** Comparing Week Numbers in PSQL and Python
 - Week numbers appear to be correct, but Week IDs are still incorrect (on Sundays and Mondays)
+*** Python
+- ~datetime.strftime("%U")~ provides "normal" weeks
+- ~datetime.strftime("%W")~ provides ISO weeks
+*** PostgreSQL
+** New Date Dimension Script
+*** Python
+**** Columns
+#+begin_example sql
+id, date_id, epoch, day_suffix, day_name, day_of_week, day_of_week_iso, day_of_month,
+day_of_quarter, day_of_year, week_id, week_id_iso, week_name, week_name_iso, week_of_month,
+week_of_year, week_of_year_id, week_of_year_iso, week_of_year_iso_id, month_of_year,
+month_name, month_name_abbreviated, quarter_of_year, quarter_name, quarter_id, yyyy,
+first_day_of_week, last_day_of_week, first_day_of_week_iso, last_day_of_week_iso,
+first_day_of_month, last_day_of_month, first_day_of_quarter, last_day_of_quarter,
+first_day_of_year, last_day_of_year, mmyyyy, mmddyyyy, weekend_indr
+#+end_example
 
 * Saturday, December 10, 2022
 :LOGBOOK:

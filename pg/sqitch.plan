@@ -1,0 +1,5 @@
+%syntax-version=1.0.0
+%project=DateDimension
+%uri=https://github.com/palevell/DateDimension
+
+app_schema 2024-11-17T23:44:42Z Patrick <patrick29501@gmx.com> # Add schema for all dim_date objects

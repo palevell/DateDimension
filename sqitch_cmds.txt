@@ -1,0 +1,146 @@
+19689  apt list -a sqitch
+19709  edsh apt/sqitch.sh
+19713  sudo ~/bin/apt/sqitch.sh
+19714  edsh apt/sqitch.sh
+19715  sudo ~/bin/apt/sqitch.sh
+19719  which sqitch
+19720  git init --initial-branch=main && new-orgs.sh && gi hugo,node,python,emacs,django,flask,jetbrains,visualstudiocode,qt,sass >.gitignore && new-dotenv-keys >>.env
+19727  gca "Initial commit"
+19729  git ls
+19730  git last
+19731  ~/bin/git/github-ipadguy.sh
+19733  git config --list --local
+19734  git remote add origin git@github.com:iPadGuy/sqitch-into.git
+19735  git push -u origin main
+19743  sqitch init flipr --uri https://github.com/iPadGuy/sqitch-into --engine pg
+19745  cat sqitch.conf
+19746  git config --list --local
+19761  sqitch config --user user.name 'iPad Guy'
+19762  sqitch config --user user.email 'ipad.guy.100@gmx.com'
+19763  cat sqitch.conf
+19764  sqitch config --user user.name 'iPad Guy'
+19765  sqitch config --user user.email 'ipad.guy.100@gmx.com'
+19766  cat sqitch.conf
+19767  cat ~/.sqitch/sqitch.conf
+19768  cat sqitch.plan
+19769  sqitch add appschema -n 'Add schema for all flipr objects.'
+19771  tree -aF -I '*~*|__pycache__*|.git*|.idea*|.vscode*|.venv*|*log|dirtree*txt' --dirsfirst ~/dav.box/
+19772  tree -aF -I '*~*|__pycache__*|.git*|.idea*|.vscode*|.venv*|*log|dirtree*txt' --dirsfirst
+19777  gca 'Initialize Sqitch configuration'
+19778  git push
+19782  sqitch deploy db:pg:flipr_test
+19784  sqitch verify db:pg:flipr_test
+19785  sqitch status db:pg:flipr_test
+19786  sqitch revert db:pg:flipr_test
+19787  sqitch status db:pg:flipr_test
+19789  sqitch verify db:pg:flipr_test
+19790  sqitch log db:pg:flipr_test
+19792  git lo
+19793  gca 'Add flipr schema'
+19794  sqitch deploy --verify db:pg:flipr_test
+19796  git push
+19798  sqitch status db:pg:flipr_test
+19799  sqitch target add flipr_test db:pg:flipr_test
+19800  sqitch engine add pg flipr_test
+19801  sqitch status
+19802  sqitch config --bool deploy.verify true
+19803  sqitch config --bool rebase.verify true
+19804  cat ~/.sqitch/sqitch.conf
+19805  cat sqitch.conf
+19806  git commit -am 'Set default deployment target and always verify.'
+19807  git push
+19813  sqitch add users --requires appschema -n 'Creates table to track our users.'
+19821  sqitch deploy
+19827  sqitch verify
+19828  sqitch status
+19829  sqitch revert --to @HEAD^ -y
+19831  sqitch status
+19832  sqitch verify
+19833  git commit -am 'Add users table.'
+19835  git add .
+19836  git commit -am 'Add users table.'
+19838  sqitch deploy
+19839  sqitch status
+19840  sqitch add insert_user --requires users --requires appschema   -n 'Creates a function to insert a user.'
+19841  sqitch add change_pass --requires users --requires appschema   -n 'Creates a function to change a user password.'
+19842  cat sqitch.plan
+19843  sqitch deploy
+19845  sqitch status
+19846  sqitch revert -y --to @HEAD^^
+19848  gca 'Add `insert_user()` and `change_pass()`.'
+19850  git lo
+19851  sqitch deploy
+19852  sqitch status
+19853  sqitch verify
+19854  sqitch tag v1.0.0-dev1 -n 'Tag v1.0.0-dev1.'
+19855  git commit -am 'Tag the database with v1.0.0-dev1.'
+19856  git tag v1.0.0-dev1 -am 'Tag v1.0.0-dev1'
+19858  sqitch deploy db:pg:flipr_dev
+19859  sqitch status db:pg:flipr_dev
+19860  sqitch bundle
+19863  sqitch deploy db:pg:flipr_prod
+19868  git push
+19870  git co -b flips
+19871  sqitch add flips -r appschema -r users -n 'Adds table for storing flips.'
+19872  sqitch deploy
+19873  sqitch status --show-tags
+19874  gca 'Add flips table.'
+19892  # sqitch add insert_flip --requires --users --appschema
+19894  sqitch status
+19895  sqitch log
+19896  sqitch add insert_flip --requires --flips --appschema -n "Crates a function to insert a flip
+19897  sqitch add insert_flip --requires --flips --appschema -n "Crates a function to insert a flip"
+19898  sqitch add insert_flip --requires --flips --requires appschema -n "Crates a function to insert a flip"
+19899  sqitch log
+19900  sqitch add insert_flip --requires flips --requires appschema -n "Crates a function to insert a flip"
+19901  sqitch add delete_flip --requires flips --requires appschema -n "Crates a function to delete a flip"
+19902  sqitch commands
+19903  sqitch help add
+19904  sqitch add --change insert_flip --requires flips --requires users --requires appschema -n "Crates a function to insert a flip"
+19905  sqitch add insert_flip --change --requires flips --requires users --requires appschema -n "Crates a function to insert a flip"
+19906  sqitch help add
+19911  sqitch log
+19912  sqitch add --change insert_flip --requires flips --requires users --requires appschema -n "Crates a function to insert a flip" ; sqitch add insert_flip --change --requires flips --requires users --requires appschema -n "Crates a function to insert a flip"
+19913  sqitch add delete_flip --requires flips --requires users --requires appschema -n "Crates a function to delete a flip"
+19916  nano sqitch.plan
+19919  sqitch status --show-tags
+19920  sqitch deploy
+19921  sqitch status --show-tags
+19922  sqitch revert -y --to @HEAD^^
+19923  sqitch status --show-tags
+19925  gca "Add 'insert_flip()' and 'delete_flip()'"
+19927  git push
+19928  sqitch deploy
+19929  sqitch status --show-tags
+19933  git co main
+19934  git co main
+19935  git pull
+19936  git merge --no-ff flips
+19938  echo sqitch.plan merge=union > .gitattributes
+19940  git rebase main
+19942  cat sqitch.plan
+19943  gca 'Add `.gitattributes` with union merge for `sqitch.plan`.'
+19945  git lo
+19946  cat .gitattributes
+19947  mv .gitattributes ../
+19949  gca "Moved .gitattributes to .git root directory"
+19950  sqitch tag v1.0.0-dev2 -n 'Tag v1.0.0-dev2.'
+19951  gca 'Tag the database with v1.0.0-dev2.'
+19952  git tag v1.0.0-dev2 -am 'Tag v1.0.0-dev2'
+19953  sqitch bundle --dest-dir flipr-1.0.0-dev2
+19960  sqitch add pgcrypto --requires appschema -n "Adds pgcrypto extention to the database"
+19963  nano sqitch.plan
+19964  sqitch add pgcrypto -n "Adds pgcrypto extention to the database"
+19973  sqitch deploy
+19974  sqitch verify
+19975  sqitch revert
+19976  sqitch revert -y --to @HEAD^
+19977  sqitch deploy
+19978  sqitch rework insert_user --requires pgcrypto -n 'Change insert_user to use pgcrypto.'
+19980  sqitch rework change_pass --requires pgcrypto -n 'Change change_pass to use pgcrypto.'
+19981  sqitch deploy
+19987  sqitch revert --to @HEAD^^ -y
+19993  sqitch deploy
+19994  gca 'Use pgcrypto to encrypt passwords.'
+19995  sqitch status --show-tags
+19999  which sqitch
