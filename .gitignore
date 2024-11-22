@@ -406,3 +406,8 @@ compile_commands.json
 .ionide
 
 # End of https://www.toptal.com/developers/gitignore/api/python,emacs,jetbrains,visualstudiocode,qt
+
+## DBeaver
+.dbeaver
+.project
+

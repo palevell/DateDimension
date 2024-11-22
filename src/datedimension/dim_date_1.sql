@@ -1,13 +1,14 @@
--- dim_date.sql - Friday, October 28, 2022
+-- dim_date_1.sql - Friday, November 15, 2024
 /*
  * Ref: https://duffn.github.io/postgresql-date-dimension/
  */
 
+SET search_path TO date_dim;
 
--- DROP TABLE IF EXISTS dim_date;
--- DROP TABLE IF EXISTS dim_date2;
 
-CREATE TABLE IF NOT EXISTS dim_date (
+-- DROP TABLE IF EXISTS dim_date_1;
+
+CREATE TABLE IF NOT EXISTS dim_date_1 (
 	id			INT NOT NULL PRIMARY KEY,
 	date_id			DATE NOT NULL UNIQUE,
 	epoch			BIGINT NOT NULL,
@@ -49,15 +50,12 @@ CREATE TABLE IF NOT EXISTS dim_date (
 	is_weekend		BOOLEAN NOT NULL
 );
 
--- ALTER TABLE public.dim_date ADD CONSTRAINT dim_date_date_dim_id_pk PRIMARY KEY (id);
-
--- CREATE INDEX dim_date_actual_idx ON dim_date(date_id);
-CREATE INDEX idx_dim_date_week_thru ON dim_date(week_thru);
-CREATE INDEX idx_dim_date_month_thru ON dim_date(month_thru);
-CREATE INDEX idx_dim_date_year ON dim_date(yyyy);
+CREATE INDEX idx_dim_date1_week_thru ON dim_date_1(week_thru);
+CREATE INDEX idx_dim_date1_month_thru ON dim_date_1(month_thru);
+CREATE INDEX idx_dim_date1_year ON dim_date_1(yyyy);
 
 
-INSERT INTO dim_date
+INSERT INTO dim_date_1
 SELECT TO_CHAR(datum, 'yyyymmdd')::INT AS id,
 	datum AS date_id,
 	EXTRACT(EPOCH FROM datum) AS epoch,
@@ -105,15 +103,15 @@ SELECT TO_CHAR(datum, 'yyyymmdd')::INT AS id,
 	WHEN EXTRACT(DOW FROM datum) IN (0, 6) THEN TRUE
 	ELSE FALSE
 	END AS is_weekend
-FROM (SELECT '1970-01-01'::DATE + SEQUENCE.DAY AS datum
-	FROM GENERATE_SERIES(0, 29219) AS SEQUENCE (DAY)
+FROM (SELECT '2024-10-01'::DATE + SEQUENCE.DAY AS datum
+	FROM GENERATE_SERIES(0, 61) AS SEQUENCE (DAY)
 	GROUP BY SEQUENCE.DAY) DQ
 ORDER BY 1;
 
-
+/*
 SELECT date_id, day_name, day_suffix, month_name, yyyy
 FROM dim_date
-WHERE date_id BETWEEN '2022-10-21' AND '2022-10-25';
+WHERE date_id BETWEEN '2024-10-01' AND '2022-11-30';
 
 SELECT * FROM dim_date dd WHERE date_id BETWEEN '1977-01-01' AND '1977-01-15';
-
+*/

@@ -5,14 +5,36 @@
 #+CATEGORY:	Projects
 #+TAGS:		log python datawarehouse datedimension
 
+* Tuesday, November 19, 2024
+** Day Name Abbreviation Column
+
+** Solution
+*** PostgreSQL
+- Where ~INTERVAL~ is used
 * Sunday, November 17, 2024
+** Virtual Environments
 - Switched Virtual Environment Manager From PipEnv to PDM
+** Issues
+*** Week Definitions
+**** ISO (European)
+- January 1st is in Week One, Weeks start on Monday
+**** Non-ISO
+1. First full week is Week One, partial week is Week Zero
+2. First week with a Thursday (ISO) or January 4th is Week One, partial week is Week Zero
+*** ISO Week Numbers vs Normal Week Numbers
+- ISO Week Numbers in ~dim_date~ are correct
+- Week Numbers in ~dim_date~ are wrong (these are the ones I created)
+**** Normal Week Numbers
+- Incorrect calculation--Week ends on Monday, not Saturday
+- Week number should have been calculated by adding a day, not subtracting (this seems counter-intuitive)
 ** Comparing Week Numbers in PSQL and Python
 - Week numbers appear to be correct, but Week IDs are still incorrect (on Sundays and Mondays)
 *** Python
 - ~datetime.strftime("%U")~ provides "normal" weeks
 - ~datetime.strftime("%W")~ provides ISO weeks
 *** PostgreSQL
+*** Pendulum
+- Week numbers are ISO-based
 ** New Date Dimension Script
 *** Python
 **** Columns

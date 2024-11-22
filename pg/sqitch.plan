@@ -2,4 +2,5 @@
 %project=DateDimension
 %uri=https://github.com/palevell/DateDimension
 
-app_schema 2024-11-17T23:44:42Z Patrick <patrick29501@gmx.com> # Add schema for all dim_date objects
+# app_schema 2024-11-17T23:44:42Z Patrick <patrick29501@gmx.com> # Add schema for all dim_date objects
+# dim_date [app_schema] 2024-11-18T14:07:24Z Patrick <patrick29501@gmx.com> # Date Dimension Table
